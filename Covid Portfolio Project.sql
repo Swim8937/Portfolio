@@ -1,16 +1,18 @@
-select * 
-from PortfolioProject.coviddeaths
-order by location, date;
-
 /*
-select *
-from PortfolioProject.covidvaccinations
-order by location, date;
+Covid-19 Data Exploration for tableau
+
+Skills used: Converting Data Types, Joins, Windows Functions, CTE, Temp Tables, Aggregate Functions
+
 */
 
 
+-- Convert datatype of date to datetime
+alter table PortfolioProject
+modify column date datetime
 
--- Looking at Geting Covid Rate
+
+
+-- Looking at Getting Covid Rate
 select continent, location, date, total_cases, population, round(total_cases/ population, 2) get_rate
 from PortfolioProject.coviddeaths
 Where continent is not null
