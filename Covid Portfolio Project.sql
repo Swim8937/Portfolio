@@ -1,12 +1,11 @@
 /*
-Covid-19 Data Exploration for tableau
+Covid data exploration for data visualization
 
 Skills used: Converting Data Types, Joins, Windows Functions, CTE, ifnull, Temp Tables, Aggregate Functions
-
 */
 
 
--- Convert datatype of date to datetime
+-- Convert date datatype to datetime
 alter table PortfolioProject
 modify column date datetime
 
@@ -29,7 +28,7 @@ order by continent, location;
 
 
 
--- Looking at Highest Geting Covid Rate in the period
+-- Looking at the Highest Infection Rate in the period
 select continent, location, max(total_cases) total_cases, population, round(max(total_cases) / population, 2) highest_get_covid_rate
 from PortfolioProject.coviddeaths
 Where continent is not null
@@ -39,7 +38,7 @@ order by highest_get_covid_rate desc;
 
 
 
--- Looking at Highest Death Rate in the period
+-- Looking at the Highest Death Rate in the period
 select continent, location, max(total_deaths) total_deaths, population, max(total_deaths) / population highest_death_rate
 from PortfolioProject.coviddeaths
 Where continent is not null
@@ -49,7 +48,7 @@ order by highest_death_rate desc;
 
 
 
--- Looking at overall cases, deaths, deathpercentage
+-- Looking at overall cases, deaths, and death percentage
 select sum(new_deaths) total_deaths, sum(new_cases) total_cases, sum(new_deaths)/sum(new_cases) * 100 deathpercentage
 from PortfolioProject.coviddeaths
 where continent is not null;
@@ -57,9 +56,12 @@ where continent is not null;
 
 
 
+-- Exploring Vaccinations data
 
--- Total population vs vaccinations and rate of number of people got vaccinated
--- using window function to calculation number of vaccinated people
+
+
+-- Total population vs vaccinations and get vaccinated rate
+-- using window function to calculate the number of vaccinated people
 select cd.continent, cd.location, cd.date, cd.population, cv.new_vaccinations, 
 	sum(cv.new_vaccinations)over(partition by cd.location order by cd.date) RollingPeopleVaccinated,
     sum(cv.new_vaccinations)over(partition by cd.location order by cd.date) / cd.population vaccinated_rate
@@ -75,7 +77,7 @@ order by 2,3;
 
 
 
--- Using CTE to perform previous query
+-- Using CTE to perform the previous query
 with PopvsVac
 as
 (
@@ -97,7 +99,7 @@ from PopvsVac;
 
 
 
--- Using Temp Table to perform previous query
+-- Using Temp Table to perform the previous query
 drop table if exists PopulationVaccinatedRate;
 create table PopulationVaccinatedRate
 (
