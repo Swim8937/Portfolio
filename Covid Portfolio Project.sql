@@ -48,10 +48,14 @@ order by highest_death_rate desc;
 
 
 
+
 -- Looking at overall cases, deaths, deathpercentage
 select sum(new_deaths) total_deaths, sum(new_cases) total_cases, sum(new_deaths)/sum(new_cases) * 100 deathpercentage
 from PortfolioProject.coviddeaths
 where continent is not null;
+
+
+
 
 
 -- Total population vs vaccinations and rate of number of people got vaccinated
@@ -66,6 +70,9 @@ join PortfolioProject.covidvaccinations cv
     and cd.date = cv.date
 where cd.continent is not null
 order by 2,3;
+
+
+
 
 
 -- Using CTE to perform previous query
@@ -85,6 +92,9 @@ order by 2,3
 )
 select *
 from PopvsVac;
+
+
+
 
 
 -- Using Temp Table to perform previous query
