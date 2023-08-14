@@ -1,7 +1,7 @@
 /*
 Covid-19 Data Exploration for tableau
 
-Skills used: Converting Data Types, Joins, Windows Functions, CTE, Temp Tables, Aggregate Functions
+Skills used: Converting Data Types, Joins, Windows Functions, CTE, ifnull, Temp Tables, Aggregate Functions
 
 */
 
@@ -12,11 +12,12 @@ modify column date datetime
 
 
 
--- Looking at Getting Covid Rate
-select continent, location, date, total_cases, population, round(total_cases/ population, 2) get_rate
+-- Looking at Infection Rate
+select location, ifnull(max(total_cases),0) total_cases, population, ifnull(round(max(total_cases) / population, 2),0) Infection_Rate
 from PortfolioProject.coviddeaths
 Where continent is not null
-order by continent, location;
+group by location, population
+order by Infection_Rate desc;
 
 
 
