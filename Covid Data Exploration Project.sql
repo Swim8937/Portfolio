@@ -7,7 +7,7 @@ Skills used: Converting Data Types, Joins, Windows Functions, CTE, ifnull, Temp 
 
 -- Convert date datatype to datetime
 alter table PortfolioProject
-modify column date datetime
+modify date datetime
 
 
 
