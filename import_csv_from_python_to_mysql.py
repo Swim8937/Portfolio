@@ -13,9 +13,9 @@ db_user = 'root'
 db_password = 'Aa9955007744!'
 db_host = 'localhost'
 db_port = '3306'
-db_name = 'PortfolioProject'
+db_name = 'Portfolio_Project'
 
-db_uri = f"mysql+mysqlconnector://{'root'}:{'Aa9955007744!'}@{'localhost'}:{'3306'}/{'PortfolioProject'}"
+db_uri = f"mysql+mysqlconnector://{'root'}:{'Aa9955007744!'}@{'localhost'}:{'3306'}/{'Portfolio_Project'}"
 
 engine = create_engine(db_uri)
 
