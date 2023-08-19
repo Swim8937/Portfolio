@@ -35,6 +35,7 @@ alter table NashvilleHousing
 add column propertysplitaddress varchar(255),
 add column propertysplitcityy varchar(255);
 
+
 update NashvilleHousing
 set propertysplitaddress = substring(propertyaddress, 1, locate(',', propertyaddress)-1),
 	propertysplitcity = substring(propertyaddress, locate(',', propertyaddress)+1, length(propertyaddress));
@@ -51,12 +52,13 @@ select
 	end new_soldasvacant
 from Portfolio_Project.NashvilleHousing;
 
+
 update Portfolio_Project.NashvilleHousing
 set SoldAsVacant = case 
-						when SoldAsVacant = 'N' then 'No'
-						when soldasvacant = 'Y' then 'Yes'
-						else soldasvacant 
-				   end;
+			when SoldAsVacant = 'N' then 'No'
+			when soldasvacant = 'Y' then 'Yes'
+			else soldasvacant 
+		   end;
 
 
 
