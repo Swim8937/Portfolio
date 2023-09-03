@@ -1,7 +1,9 @@
 /*
-Covid data exploration for data visualization
+Goal: Analyzing covid-19 death percentage, infection rate per country, and so on.
 
-Skills used: Converting Data Types, Joins, Windows Functions, CTE, ifnull, Temp Tables, Aggregate Functions
+Methods: Converting Data Types, Joins, Windows Functions, CTE, ifnull, Temp Tables, Aggregate Functions
+
+Data resource: Kaggle
 */
 
 
